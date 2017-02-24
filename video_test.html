@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div id="foo">
+            <script type="text/javascript" src="http://video-ads-qa.rubiconproject.com/video/lib/jwplayer-7.9.1/jwplayer.js"></script>
+            <script type="text/javascript">jwplayer.key = "bEbGMoiHr5Yk9andYFCXIG5hPuDzv88/nBYxQHh+d0pETonW"</script>
+            <script type="text/javascript">
+
+                var player = jwplayer(document.getElementsByTagName('div')[0])
+                player.setup({
+                    file: 'http://video-ads-qa.rubiconproject.com/video/assets/silence16x9.mp4',
+                    primary: 'flash',
+                    autostart: true,
+                    mute: true,
+                    width: 400,
+                    height: 450,
+                    controls: false,
+                    advertising: {
+                        autoplayadsmuted: true,
+                        client: 'vast',
+                        tag: 'http://optimized-by.rubiconproject.com/a/api/vast.xml?account_id=7780&site_id=87184&zone_id=413288&size_id=203&width=400&height=450&p_window.depth=0&rf=http%3A%2F%2Fvideo-ads.rubiconproject.com%2Fvideo%2Fapex%2Fdemo%2Fad-complete-fail.html&p_window.url=&p_window.w=1309&p_window.h=739&p_aso.video.ext.ad.w=400&p_aso.video.ext.ad.h=450&p_aso.video.api=2&p_aso.video.mimes=application/javascript,video/mp4'
+                    }
+                });
+                player.on('adRequest', function () {
+                    console.info('****AD REQUEST****')
+                })
+                player.on('adComplete', function () {
+                    console.info('****AD COMPLETE****')
+                    player.remove()
+                })
+
+            </script>
+        </div>
+    </body>
+</html>
